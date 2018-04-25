@@ -20,14 +20,14 @@ items:
     source:
       contextDir: image
       git:
-        uri: https://github.com/mangirdaz/redis-openshift.git
+        uri: https://github.com/rroart/redis-openshift.git
       type: Git
     strategy:
       dockerStrategy:
         from:
           kind: ImageStreamTag
           name: rhel7:latest
-          namespace: openshift
+          namespace: rroartproject
       type: Docker
     triggers: []
   status:
