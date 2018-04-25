@@ -14,7 +14,7 @@
 
 FROM rhel7
 
-RUN wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN curl http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -ivh epel-release-latest-7.noarch.rpm
 RUN yum repolist
 RUN yum --enablerepo=epel
