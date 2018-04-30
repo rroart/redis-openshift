@@ -19,6 +19,7 @@ RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noar
 RUN yum repolist
 RUN yum repolist all
 RUN yum --enablerepo=epel search logrotate
+RUN yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/logrotate-3.8.6-14.el7.x86_64.rpm
 RUN rpm -q logrotate || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/logrotate-3.8.6-14.el7.x86_64.rpm
 #RUN yum --enablerepo=epel install epel-release -y
 RUN yum install epel-release -y
