@@ -18,8 +18,8 @@ RUN yum repolist
 RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 RUN yum repolist
 RUN yum repolist all
-RUN yum --enablerepo=epel search logrotateR
-UN rpm -q logrotate || echo
+RUN yum --enablerepo=epel search logrotate
+RUN rpm -q logrotate || echo
 RUN yum install logrotate -y
 #RUN yum --enablerepo=epel install epel-release -y
 RUN yum install epel-release -y
