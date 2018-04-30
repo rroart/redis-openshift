@@ -19,7 +19,7 @@ RUN yum repolist all
 RUN yum install epel-release -y || yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 RUN yum repolist all
 
-RUN yum install redis hostname -y ; yum clean all
+RUN yum install redis hostname iperf -y ; yum clean all
 
 COPY redis-master.conf /redis-master/redis.conf
 COPY redis-slave.conf /redis-slave/redis.conf
