@@ -14,14 +14,10 @@
 
 FROM rhel7
 
-RUN yum repolist
-RUN yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
-RUN yum repolist
-RUN yum repolist all
-RUN yum --enablerepo=epel search logrotate
 RUN rpm -q logrotate || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/logrotate-3.8.6-14.el7.x86_64.rpm -y
-#RUN yum --enablerepo=epel install epel-release -y
-RUN yum install epel-release -y
+RUN yum repolist all
+RUN yum install epel-release -y || yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+RUN yum repolist all
 
 RUN yum install redis hostname -y ; yum clean all
 
