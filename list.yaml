@@ -24,6 +24,7 @@ items:
       type: Git
     strategy:
       dockerStrategy:
+        noCache: true
         from:
           kind: ImageStreamTag
           name: rhel7:latest
