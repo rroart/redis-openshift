@@ -17,6 +17,7 @@ FROM rhel7
 #RUN curl -O http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 #RUN rpm -ivh epel-release-latest-7.noarch.rpm
 RUN yum repolist
+RUN yum --enablerepo=epel search logrotate
 RUN rpm -q logrotate
 RUN yum install logrotate -y
 #RUN yum --enablerepo=epel install epel-release -y
