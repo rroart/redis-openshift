@@ -31,6 +31,7 @@ function launchsentinel() {
       master="${REDIS_MASTER_SERVICE_HOST}"
     fi
 
+    echo "Connecting to master: " ${master}
     redis-cli -h ${master} INFO
     if [[ "$?" == "0" ]]; then
       break
@@ -59,6 +60,7 @@ function launchslave() {
       sleep 60
       exit 1
     fi
+    echo "Connecting to master: " ${master}
     redis-cli -h ${master} INFO
     if [[ "$?" == "0" ]]; then
       break
