@@ -28,7 +28,7 @@ function launchsentinel() {
     master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
     if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
-	master="${master//\"}"
+	master="${REDIS_MASTER_SERVICE_HOST}"
     fi
     if [[ -n ${master} ]]; then
       master="${master//\"}"
@@ -61,7 +61,7 @@ function launchslave() {
     master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
     if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
-	master="${master//\"}"
+	master="${REDIS_MASTER_SERVICE_HOST}"
     fi
     if [[ -n ${master} ]]; then
       master="${master//\"}"
