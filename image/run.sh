@@ -24,9 +24,9 @@ function launchmaster() {
 
 function launchsentinel() {
   while true; do
-    output=$(redis-cli -h ${REDIS_SENTINEL_SERVICE_HOST} -p ${REDIS_SENTINEL_SERVICE_PORT} --csv SENTINEL get-master-addr-by-name mymaster
-    master=echo ${output} | tr ',' ' ' | cut -d' ' -f1)
-    if [[ "${master}" == "ERROR" ]]; then
+    output=$(redis-cli -h ${REDIS_SENTINEL_SERVICE_HOST} -p ${REDIS_SENTINEL_SERVICE_PORT} --csv SENTINEL get-master-addr-by-name mymaster)
+    master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
+    if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
 	master="${master//\"}"
     fi
@@ -57,9 +57,9 @@ function launchsentinel() {
 
 function launchslave() {
   while true; do
-    output=$(redis-cli -h ${REDIS_SENTINEL_SERVICE_HOST} -p ${REDIS_SENTINEL_SERVICE_PORT} --csv SENTINEL get-master-addr-by-name mymaster
-    master=echo ${output} | tr ',' ' ' | cut -d' ' -f1)
-    if [[ "${master}" == "ERROR" ]]; then
+    output=$(redis-cli -h ${REDIS_SENTINEL_SERVICE_HOST} -p ${REDIS_SENTINEL_SERVICE_PORT} --csv SENTINEL get-master-addr-by-name mymaster)
+    master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
+    if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
 	master="${master//\"}"
     fi
