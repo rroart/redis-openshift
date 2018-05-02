@@ -85,10 +85,10 @@ items:
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-          - name: data
-            persistentVolumeClaim:
-                claimName: redis
-                ReadOnly:   false
+        - name: data
+          persistentVolumeClaim:
+            claimName: redis
+            ReadOnly:   false
     test: false
     triggers:
     - type: ConfigChange
@@ -169,10 +169,10 @@ items:
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-          - name: data
-            persistentVolumeClaim:
-                claimName: redis
-                ReadOnly:   false
+        - name: data
+          persistentVolumeClaim:
+            claimName: redis
+            ReadOnly:   false
     test: false
     triggers:
     - imageChangeParams:
@@ -245,10 +245,10 @@ items:
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-          - name: data
-            persistentVolumeClaim:
-                claimName: redis
-                ReadOnly:   false
+        - name: data
+          persistentVolumeClaim:
+            claimName: redis
+            ReadOnly:   false
     test: false
     triggers:
     - type: ConfigChange
