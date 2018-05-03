@@ -20,7 +20,7 @@ RUN yum install epel-release -y || yum install https://dl.fedoraproject.org/pub/
 RUN yum repolist all
 
 RUN yum install redis hostname -y ; yum clean all
-$RUN yum install redis hostname iperf iputils net-tools telnet nc nmap -y ; yum clean all
+#RUN yum install redis hostname iperf iputils net-tools telnet nc nmap -y ; yum clean all
 #RUN rpm -q hostname || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/hostname-3.13-3.el7.x86_64.rpm -y || echo download failed
 #RUN rpm -q iputils || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/iputils-20160308-10.el7.x86_64.rpm -y || echo download failed
 #RUN rpm -q net-tools || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/net-tools-2.0-0.22.20131004git.el7.x86_64.rpm -y || echo download failed
