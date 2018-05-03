@@ -19,7 +19,7 @@ function launchmaster() {
     echo "Redis master data doesn't exist, data won't be persistent!"
     mkdir /redis-master-data
   fi
-  redis-server /redis-master/redis.conf
+  redis-server /redis-master/redis.conf --protected-mode no
 }
 
 function launchsentinel() {
@@ -28,7 +28,7 @@ function launchsentinel() {
     master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
     if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
-	master="${REDIS_MASTER_SERVICE_HOST}"
+	#master="${REDIS_MASTER_SERVICE_HOST}"
     fi
     if [[ -n ${master} ]]; then
       master="${master//\"}"
@@ -52,7 +52,7 @@ function launchsentinel() {
   echo "sentinel failover-timeout mymaster 180000" >> ${sentinel_conf}
   echo "sentinel parallel-syncs mymaster 1" >> ${sentinel_conf}
 
-  redis-sentinel ${sentinel_conf}
+  redis-sentinel ${sentinel_conf} --protected-mode no
 }
 
 function launchslave() {
@@ -61,7 +61,7 @@ function launchslave() {
     master=$(echo ${output} | tr ',' ' ' | cut -d' ' -f1)
     if [[ "${master}" = "ERROR" ]]; then
 	echo "Failed to find master (using env instead): " $output
-	master="${REDIS_MASTER_SERVICE_HOST}"
+	#master="${REDIS_MASTER_SERVICE_HOST}"
     fi
     if [[ -n ${master} ]]; then
       master="${master//\"}"
@@ -80,7 +80,7 @@ function launchslave() {
   done
   sed -i "s/%master-ip%/${master}/" /redis-slave/redis.conf
   sed -i "s/%master-port%/6379/" /redis-slave/redis.conf
-  redis-server /redis-slave/redis.conf
+  redis-server /redis-slave/redis.conf --protected-mode no
 }
 
 if [[ "${MASTER}" == "true" ]]; then
