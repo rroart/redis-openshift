@@ -28,7 +28,6 @@ items:
         from:
           kind: ImageStreamTag
           name: rhel7:latest
-          namespace: roarr-test
       type: Docker
     triggers: []
   status:
@@ -99,7 +98,6 @@ items:
         from:
           kind: ImageStreamTag
           name: redis:latest
-          namespace: roarr-test
       type: ImageChange
   status: {}
 - apiVersion: v1
@@ -182,7 +180,6 @@ items:
         from:
           kind: ImageStreamTag
           name: redis:latest
-          namespace: roarr-test
       type: ImageChange
     - imageChangeParams:
         automatic: true
@@ -191,7 +188,6 @@ items:
         from:
           kind: ImageStreamTag
           name: redis:latest
-          namespace: roarr-test
       type: ImageChange
     - type: ConfigChange
   status: {}
@@ -259,7 +255,6 @@ items:
         from:
           kind: ImageStreamTag
           name: redis:latest
-          namespace: roarr-test
       type: ImageChange
   status: {}
 - apiVersion: v1
