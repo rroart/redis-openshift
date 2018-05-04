@@ -20,13 +20,13 @@ RUN yum install epel-release -y || yum install https://dl.fedoraproject.org/pub/
 RUN yum repolist all
 
 RUN yum install redis hostname -y ; yum clean all
-#RUN yum install redis hostname iperf iputils net-tools telnet nc nmap -y ; yum clean all
-#RUN rpm -q hostname || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/hostname-3.13-3.el7.x86_64.rpm -y || echo download failed
-#RUN rpm -q iputils || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/iputils-20160308-10.el7.x86_64.rpm -y || echo download failed
-#RUN rpm -q net-tools || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/net-tools-2.0-0.22.20131004git.el7.x86_64.rpm -y || echo download failed
-#RUN rpm -q telnet || yum install mirror.centos.org/centos/7/os/x86_64/Packages/telnet-0.17-64.el7.x86_64.rpm -y || echo download failed
-#RUN rpm -q nc || yum install mirror.centos.org/centos/7/os/x86_64/Packages/nmap-ncat-6.40-7.el7.x86_64.rpm -y || echo download failed
-#RUN rpm -q nmap || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/nmap-6.40-7.el7.x86_64.rpm -y || echo download failed
+RUN yum install redis hostname iperf iputils net-tools telnet nc nmap -y ; yum clean all
+RUN rpm -q hostname || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/hostname-3.13-3.el7.x86_64.rpm -y || echo download failed
+RUN rpm -q iputils || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/iputils-20160308-10.el7.x86_64.rpm -y || echo download failed
+RUN rpm -q net-tools || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/net-tools-2.0-0.22.20131004git.el7.x86_64.rpm -y || echo download failed
+RUN rpm -q telnet || yum install mirror.centos.org/centos/7/os/x86_64/Packages/telnet-0.17-64.el7.x86_64.rpm -y || echo download failed
+RUN rpm -q nc || yum install mirror.centos.org/centos/7/os/x86_64/Packages/nmap-ncat-6.40-7.el7.x86_64.rpm -y || echo download failed
+RUN rpm -q nmap || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/nmap-6.40-7.el7.x86_64.rpm -y || echo download failed
 
 COPY redis-master.conf /redis-master/redis.conf
 COPY redis-slave.conf /redis-slave/redis.conf
