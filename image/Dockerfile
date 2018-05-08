@@ -14,7 +14,6 @@
 
 FROM rhel7
 
-RUN cd /tmp && time git clone git@github.com:rroart/redis-openshift.git
 RUN date
 RUN rpm -q logrotate || yum install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/logrotate-3.8.6-14.el7.x86_64.rpm -y
 RUN date
