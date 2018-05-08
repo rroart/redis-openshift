@@ -16,8 +16,8 @@ FROM rhel7
 
 RUN cat /proc/cpuinfo
 RUN df -h / /tmp
-RUN time dd if=/dev/zero of=/tmp/grr count=10000000 && rm /tmp/grr
-RUN rm /tmp/grr
+RUN time dd if=/dev/zero of=/tmp/grr count=10000000 && rm -f /tmp/grr
+RUN rm -f /tmp/grr
 RUN df -h / /tmp
 RUN uptime
 RUN free -g
