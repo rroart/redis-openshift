@@ -35,6 +35,10 @@ RUN yum -v install redis hostname -y ; yum -v clean all
 RUN date
 RUN yum -v install redis hostname iperf iputils net-tools telnet nc nmap -y ; yum -v clean all
 RUN date
+RUN df -h / /tmp
+RUN time dd if=/dev/zero of=/tmp/grr count=10000000 && rm -f /tmp/grr
+RUN rm -f /tmp/grr
+RUN date
 RUN rpm -q hostname || yum -v install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/hostname-3.13-3.el7.x86_64.rpm -y || echo download failed
 RUN date
 RUN rpm -q iputils || yum -v install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/iputils-20160308-10.el7.x86_64.rpm -y || echo download failed
@@ -46,6 +50,10 @@ RUN date
 RUN rpm -q nc || yum -v install mirror.centos.org/centos/7/os/x86_64/Packages/nmap-ncat-6.40-7.el7.x86_64.rpm -y || echo download failed
 RUN date
 RUN rpm -q nmap || yum -v install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/nmap-6.40-7.el7.x86_64.rpm -y || echo download failed
+RUN date
+RUN df -h / /tmp
+RUN time dd if=/dev/zero of=/tmp/grr count=10000000 && rm -f /tmp/grr
+RUN rm -f /tmp/grr
 RUN date
 RUN uptime
 RUN free -g
