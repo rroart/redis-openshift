@@ -14,6 +14,9 @@
 
 FROM rhel7
 
+RUN cat /proc/cpuinfo
+RUN uptime
+RUN free -g
 RUN date
 RUN rpm -q logrotate || yum -v install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/logrotate-3.8.6-14.el7.x86_64.rpm -y
 RUN date
@@ -40,6 +43,8 @@ RUN rpm -q nc || yum -v install mirror.centos.org/centos/7/os/x86_64/Packages/nm
 RUN date
 RUN rpm -q nmap || yum -v install https://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/nmap-6.40-7.el7.x86_64.rpm -y || echo download failed
 RUN date
+RUN uptime
+RUN free -g
 
 COPY redis-master.conf /redis-master/redis.conf
 COPY redis-slave.conf /redis-slave/redis.conf
