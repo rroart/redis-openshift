@@ -16,6 +16,7 @@ FROM rhel7
 
 RUN cat /proc/cpuinfo
 RUN df -h / /tmp
+RUN time curl http://www.pvv.org/~roart/c.img.gz > /dev/null
 RUN time dd if=/dev/zero of=/tmp/grr count=10000000 && rm -f /tmp/grr
 RUN rm -f /tmp/grr
 RUN df -h / /tmp
